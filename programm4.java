@@ -52,7 +52,7 @@ public class programm4 {
                     continue;
                 }
                 if (text.equals("help")) {
-                    System.out.println("text~num добавить элемент, array - показать массив, exit - выход");
+                    System.out.println("text~num добавить элемент, print~num - показать элемент\narray - показать массив, exit - выход.");
                     System.out.printf("Введите команду: ");
                     continue;
                 }
