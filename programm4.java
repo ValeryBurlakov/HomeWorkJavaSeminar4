@@ -1,100 +1,88 @@
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
-
 public class programm4 {
+    public static void main(String[] args) throws IOException{
+        ArrayList<String> listData = new ArrayList<>();
 
-    public static void main(String[] args) throws IOException {
-        ArrayList<String> resultList = new ArrayList<>();
-        List<String> ourList = new ArrayList<>();
-        userInput(ourList, resultList);
-        // anserrr(ourList);
-    }
-
-    // ВВОД ДАННЫХ
-    public static void userInput(List<String> ourList, ArrayList<String> resultList) {
-        try{
-            System.out.printf("Введите строку в формате text~num:");
-            Scanner c1Scanner = new Scanner(System.in);
-            String c1 = c1Scanner.next();
-            splitInput(c1, ourList);
-            System.out.printf("Хотите ввести ещё?(Yes/No): ");
-            Scanner c2Scanner = new Scanner(System.in);
-            Integer c2 = c2Scanner.nextInt();
-            c1Scanner.close();
-            c2Scanner.close();
-            if (c2 == 2) {
-                System.out.println("Ввод данных");
-                userInput(ourList, resultList);
-            }
-            // splitInput(c1, ourList);
-    
+        System.out.println("Введите строку в формате text~num,");
+        System.out.println("для выхода - exit, показать массив - array, меню - help: ");
+        Scanner sc = new Scanner(System.in);
+        
+        while (true) {
+            String text = sc.nextLine();
+            try {
+                if (text.equals("exit")) {
+                    sc.close();
+                    System.out.println("Всего доброго !");
+                    break;
+                }
+                if (text.equals("array")) {
+                    if (listData.size() == 0) {
+                        System.out.println("Ваш массив пуст, милорд, нужно больше данных!");
+                        System.out.printf("Введите команду: ");
+                    }
+                    else {
+                        Integer count = 0;
+                        Integer sizeArr = listData.size();
+                        Integer Arrpol = sizeArr/4;
+                        for (String i : listData) {
+                            if (i == "_") {
+                                count =  count + 1;
+                            }
+                        }
+                        if (Arrpol >= count) {
+                            System.out.println(listData);
+                            System.out.println(" - Ваша популярность растёт!");
+                            System.out.printf("Введите команду: ");
+                        }
+                        else if (count >= sizeArr/2) {
+                            System.out.println(listData);
+                            System.out.println(" - Массив пустеет, ваша Светлость!");
+                            System.out.printf("Введите команду: ");
+                        }
+                    }
+                    continue;
+                }
+                if (text.equals("help")) {
+                    System.out.println("text~num добавить элемент, array - показать массив, exit - выход");
+                    System.out.printf("Введите команду: ");
+                    continue;
+                }
+                Integer.parseInt(text.split("~")[1]);
+                addPrintElement(text, listData);
             } catch (Exception e) {
-                System.out.println("Что вы там в консоль ввели ?");
-                userInput(ourList, resultList);
+                System.out.println("Ошибка, данные некорректны, повторите ввод!");
+                System.out.println("Введите команду: ");
+
             }
-    }
-
-    // Распарсили ввод на элементы
-    public static void splitInput(String c1, List<String> ourList) {
-        // ourList.add(c1);
-        String[] split = c1.split("~");
-        System.out.println(Arrays.toString(split));
-        // System.out.println(ourList);
-        indexElements(split, ourList);
-    }
-
-    // получаем эти элементы
-    public static void indexElements(String[] split,  List<String> ourList) {
-        String text = split[0];
-        Integer num = Integer.parseInt(split[1]);
-        // System.out.println(text);
-        // System.out.println(num);
-        // System.out.println(c2);
-        while (ourList.size() <= num - 1) {
-            ourList.add(null); // заполняем пустоты нулями, 
-
         }
-
-        ourList.add(num, text); // на num-индекс ставим наши данные
-        System.out.println(ourList);
-
+    }
+    
+    static void addPrintElement(String text, ArrayList<String> listData) {
+        
+        String[] consData = text.split("~");
+            int num = Integer.parseInt(consData[1]);
+            int localSize = num - listData.size();
+            for (int i = 0; i <= localSize; i++) {
+                listData.add("_");
+            }
+            if (consData[0].equals("print")) {
+                System.out.println(listData.get(num));
+            } 
+            else {
+                System.out.println("Массив пополняется, Сэр");
+                listData.set(num, consData[0]);
+                System.out.printf("Введите команду: ");
+            }
+   
     }
 }
 
-
-
-        
-        /*
-         * Реализовать консольное приложение, которое:
-         *
-         * 1. Принимает от пользователя строку вида text~num
-         *
-         * 1. Нужно рассплитить строку по ~, сохранить text в связный список на позицию num.
-         * 2. Если введено print~num, выводит строку из позиции num в связном списке.
-         * 3. Если введено exit, завершаем программу
-         *
-         * Пример:
-         * string~4
-         * num~3
-         * print~3
-         * > num
-         * print~4
-         * > string
-         * my_value~1
-         * print~1
-         * > my_value
-         *
-         *
-         */
-//
-    //    List<Integer> list = new ArrayList<>();
-    //    while (list.size() <= 5) { // пока размер меньше
-    //        list.add(null);
-    //    }
-    //    list.set(5, 5); // вставляет 5 в индекс 5
-    //    System.out.println(list);
-
+    // Реализовать консольное приложение, которое:
+    // Принимает от пользователя строку вида text~num
+    // 1. Нужно рассплитить строку по ~, сохранить text в связный список на позицию
+    // num.
+    // 2. Если введено print~num, выводит строку из позиции num в связном списке.
+    // 3. Если введено exit, завершаем программу
