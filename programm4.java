@@ -27,6 +27,7 @@ public class programm4 {
             c1Scanner.close();
             c2Scanner.close();
             if (c2 == 2) {
+                System.out.println("Ввод данных");
                 userInput(ourList, resultList);
             }
             // splitInput(c1, ourList);
@@ -62,29 +63,6 @@ public class programm4 {
         System.out.println(ourList);
 
     }
-
-    // public static void anserrr(List<String> ourList) {
-    //         System.out.printf("Хотите ввести ещё?(Yes/No): ");
-    //         Scanner c2Scanner = new Scanner(System.in);
-    //         String c2 = c2Scanner.next();
-
-    //         // c1Scanner.close();
-    //         c2Scanner.close();
-    // }
-
-
-    // нужно эти элементы добавить в список
-    // public static void arrayCreation(String c2, List<String> ourList, Integer num, String text) {
-    //    System.out.println(c2);
-    //    if (c2 == "n") {
-    //         while (ourList.size() <= num - 1) {
-    //         ourList.add(null);
-    //         // resultList.add(null);
-    //         }
-    //         ourList.add(num, text);
-    //     }
-    //     System.out.println(ourList);
-    // }
 }
 
 
