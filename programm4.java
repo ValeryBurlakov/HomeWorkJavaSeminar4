@@ -26,21 +26,27 @@ public class programm4 {
                     else {
                         Integer count = 0;
                         Integer sizeArr = listData.size();
-                        Integer Arrpol = sizeArr/4;
+                        Integer sizeQuarter = sizeArr/4;
+                        Integer sizeHalf = sizeArr/2;
                         for (String i : listData) {
                             if (i == "_") {
                                 count =  count + 1;
                             }
                         }
-                        if (Arrpol >= count) {
+                        if (sizeQuarter >= count) {
                             System.out.println(listData);
-                            System.out.println(" - Ваша популярность растёт!");
+                            System.out.println(" - Люди любят вас, Милорд!");
                             System.out.printf("Введите команду: ");
                         }
-                        else if (count >= sizeArr/2) {
+                        else if (count >= sizeHalf) {
                             System.out.println(listData);
                             System.out.println(" - Массив пустеет, ваша Светлость!");
                             System.out.printf("Введите команду: ");
+                        }
+                        else {
+                            System.out.println(listData);
+                            System.out.println("Ваша популярность растёт!");
+                            System.out.printf("Введите команду: ");  
                         }
                     }
                     continue;
