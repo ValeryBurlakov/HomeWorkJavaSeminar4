@@ -76,6 +76,7 @@ public class programm4 {
             }
             if (consData[0].equals("print")) {
                 System.out.println(listData.get(num));
+                System.out.printf("Введите команду: ");
             } 
             else {
                 System.out.println("Массив пополняется, Сэр");
